@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sentiment Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f6fc;
+      color: #333;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      background-color: #dfe9f3;
+      padding: 10px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    input[type="file"],
+    input[type="text"],
+    select {
+      display: block;
+      margin: 15px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    h3 {
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: #ecf0f1;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome, {{ username }}</h2>
+
+  <form action="/analyze" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="text" name="url" placeholder="Review page URL">
+    <select name="model">
+      <option value="random_forest">Random Forest Model</option>
+    </select>
+    <button type="submit">Analyze</button>
+  </form>
+
+  <h3>History</h3>
+  <ul>
+    {% for item in history %}
+      <li>{{ item.timestamp }} - {{ item.model }} - {{ item.result_summary }}</li>
+    {% endfor %}
+  </ul>
+
+</body>
+</html>
