@@ -1,0 +1,10 @@
+signup
+login
+dashboard
+results
+uploads
+randomforest.pkl
+vectorizer.pkl
+database
+app.py
+model_utils.py
